@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-
+import dirty from "./assets/dirty.jpg";
+import happy from "./assets/happy.png";
+import hungry from "./assets/hungry.jpg";
+import "./styles.css";
 const App = () => {
   const [happiness, setHappiness] = useState(50);
   const [hungryLevel, setHungryLevel] = useState(50);
@@ -52,8 +55,17 @@ const App = () => {
   const isCleanLevelZero = cleanLevel === 0;
   const isHungry = hungryLevel === 0;
 
+
+  let dogImage = happy;
+  if (status === "Dog is Dirty") {
+    dogImage = dirty;
+  } else if (status === "Dog is Hungry") {
+    dogImage = hungry;
+  }
+
   return (
     <>
+      <img src={dogImage} alt='dog status' />
       <h1>Status: {status}</h1>
       <p>Hungry Level: {hungryLevel}</p>
       <p>Clean Level: {cleanLevel}</p>
